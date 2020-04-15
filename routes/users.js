@@ -1,16 +1,20 @@
 const express = require('express');
 // const router = express.Router;
-const router = require('express-promise-router')(); // wraps our code in try block
+const router = require('express-promise-router')(); // wraps our code in try and catch block and catch block
+// calls the error {next(error)}
 
-const usersController = require('../controllers/users');
+const UsersController = require('../controllers/users');
+
+const { validateBody, schemas} = require('../helpers/routeHelpers')
 
 router.route('/signup')
-    .post(usersController.signUp); 
+    .post(validateBody(schemas.authSchema), UsersController.signUp); 
+        //  express will call this validateBody with schemas.authSchema as its only parameter when signup is called 
 
 router.route('/signin')
-    .post(usersController.signIn);
+    .post(UsersController.signIn);
 
 router.route('/secret')
-    .get(usersController.secret);
+    .get(UsersController.secret);
 
 module.exports = router;
