@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const db = require('./db/connection')
 
 const app = express();
 
@@ -15,7 +16,7 @@ app.use('/users', require('./routes/users'));
 app.get('/', (req, res, next) => {
     res.status(200).json({
         message : 'You requested index page!!'
-    })
+    })  
 })
 //  catch 404 errors and forward them to error handlers
 // app.use((req, res, next) => {

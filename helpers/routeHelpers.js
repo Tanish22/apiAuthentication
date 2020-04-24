@@ -11,9 +11,9 @@ module.exports = {
                 return res.status(400).json(result.error);
             }                     
             
-            //  if no error, we attach value property to req object and body property to req.value
-            
             //  first checked if req.value exists & if it doesnt, then initialize it empty obj.
+            
+            //  if no error, we attach value property to req object and body property to req.value
             if(!req.value) { req.value = {}; }
 
             req.value['body'] = result.value;   //  adding body property to req.value obj dynamically
