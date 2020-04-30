@@ -3,7 +3,7 @@ const User = require('../models/users');
 
 const {JWT_SECRET} = require('../configuration/index')
 
-const signToken = (user) => {
+const signToken = (user) => { 
   return JWT.sign(
     {
       iss: "Tanish",
@@ -46,5 +46,6 @@ module.exports = {
 
   secret : async (req, res, next) => {
     console.log("usersController.secret() called !");
+    res.json({secret : "endpoint"});
   }
 }; 
